@@ -1,0 +1,89 @@
+// vue 内置内容
+
+// 内置组件
+// Transition TransitionGroup KeepAlive Teleport Suspense
+
+// 在渲染函数中，需显式导入
+// import { h, Transition } from 'vue'
+
+// h(Transition,{
+//     // props
+// })
+
+// transition 为单个元素或组件提供过渡效果
+// prop 
+// name css type duration mode appear 
+// enterFromClass enterActiveClass enterToClass 
+// appearFromClass appearActiveClass appearToClass
+// leaveFromClass leaveActiveClass leaveToClass
+// event 
+// @before-enter @enter @after-enter
+// @appear @after-appear
+// @before-leave @leave @after-leave 
+// @enter-cancelled @leave-cancelled @appear-cancelled
+
+<Transition>
+    <div v-if="ok">toggled content</div>
+</Transition>
+<Transition>
+    <div :key="text">{{text}} </div>
+</Transition>
+<Transition name="fade" mode="out-in" appear>
+    <component :is="view"></component>
+</Transition>
+<Transition @after-enter="onTransitionComplete">
+    <div v-show="ok">toggled content </div>
+</Transition>
+
+<TransitionGroup tag="ul" name="slide">
+    <li v-for="item in items" :key="item.id">{{item.text }}</li>
+</TransitionGroup>
+
+// 缓存包裹在其中的动态切换组件
+<KeppAlive>
+    <component :is="view"></component>
+</KeppAlive>
+<KeepAlive>
+    <comp-a v-if="a > 1"></comp-a>
+    <comp-b v-else></comp-b>
+</KeepAlive>
+<Transition>
+    <KeepAlive>
+        <component :is="view"></component>
+    </KeepAlive>
+</Transition>
+
+<KeepAlive include="a,b">
+    <component :is="view"></component>
+</KeepAlive>
+<KeepAlive :include="/a|b/">
+    <component :is="view"></component>
+</KeepAlive>
+<KeepAlive :include="['a','b']">
+    <component :is="view"></component>
+</KeepAlive>
+<KeepAlive :max="10">
+    <component :is="view"></component>
+</KeepAlive>
+
+<Teleport> // 将插槽内容渲染到dom的另外位置
+    <teleport to="#some-id"></teleport> // 指定目标容器
+    <teleport to=".some-class"></teleport>
+    <teleport to="[data-teleport]"></teleport>
+    <teleport to="#popup" :disabled="displayVideoInline">
+        <video src="./my-movie.mp4"></video>
+    </teleport>
+</Teleport>
+
+<Suspense @resolve @pending @fallback> // experimental
+// 用于协调对组件树中嵌套的异步依赖的处理
+    <template>
+        default slot
+    </template>
+    <template #fallback>
+        fallback content 
+    </template>
+</Suspense>
+
+
+

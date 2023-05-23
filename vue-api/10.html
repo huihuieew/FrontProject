@@ -1,0 +1,104 @@
+// vue 内置内容
+// vue 内置指令
+// v-text v-html v-show v-if v-else-if v-else v-for v-on v-bind v-model v-slot v-pre v-once v-memo v-cloak
+
+// v-text 模板语法-文本插值
+<span v-text="msg"></span>
+// equal to
+<span>{{msg}}</span>  
+
+// v-html 模板语法-原始HTML
+// 更新元素的innerHTML
+<div v-html="html"></div>
+
+// v-show
+// v-if v-else-if v-else 
+
+// v-for 
+<div v-for="item in items">
+    {{item.text}}
+</div>
+
+// v-on
+<button v-on:click="doThis"></button>
+<button v-on:[event]="doThis"></button> // 动态事件
+<button @click="doThis('hello',$event)"></button>
+<button @click="doThis"></button>
+<button @[event]="doThis"></button>
+<button @click.stop="doThis"></button>
+<button @click.prevent="doThis"></button>
+<button @click.stop.prevent="doThis"></button>
+<button @click.once="doThis"></button>
+<button @click.enter="doThis"></button>
+<button v-on="{mousedown:doThis,mouseup:doThat}"></button>
+<MyComponent @my-event="handleThis" />
+<MyComponent @my-event="handleThis(1,2,3,$event)" />
+
+// v-bind
+<img :src="imgSrc" />
+<button :[key]="value"></button>
+<img :src="`/path/to/images/${filename}`" />
+// class绑定
+<div :class="{red: isRed}"></div>
+<div :class="[classA,classB]"></div>
+<div :class="[classA,{classB:isB,classC:isC }]"></div>
+// style
+<div :style="{fontSize:size+'px'}"></div>
+<div :style="[styleObjectA,styleObjectB]"></div>
+<div v-bind="{id:someProp,'other-attr':otherProp}"></div>
+<MyComponent :prop="someThing" />
+<MyComponent v-bind="$props" />
+
+// v-model 在表单输入元素 组件上创建双向绑定
+// input select textarea components
+// .lazy .number .trim
+
+// v-slot 默认插槽 具名插槽 作用域插槽
+<BaseLayout>
+    <template #header>
+        header content
+    </template>
+    <template #default>
+        default slot content
+    </template>
+    <template #footer>
+        footer
+    </template>
+</BaseLayout>
+<InfiniteScroll>
+    <template v-slot:item="slotProps">
+        <div class="item">
+            {{slotProps.item.text }}
+        </div>
+    </template>
+</InfiniteScroll>
+<Mouse v-slot="{x,y}">
+    Mouse position: {{x}} {{y}}
+</Mouse>
+
+// v-pre 
+<span v-pre>{{this will not be compiled }}</span>
+// v-once 当作静态内容，跳过渲染；
+<span v-once>this will never change: {{msg }}</span>
+<div v-once>
+    <h1>comment</h1>
+    <p>{{msg}}</p>
+</div>
+<MyComponent v-once :comment="msg" />
+<ul>
+    <li v-for="i in list" v-once>{{i}}</li>
+</ul>
+// v-memo 长度超过1000的v-for列表
+<div v-for="item in list" :key="item.id" v-memo="[item.id === selected]">
+    <p>id:{{item.id}} - selected: {{item.id === selected }} </p>
+    <p>...more child nodes</p>
+</div>
+
+// v-cloak 用于隐藏尚未完成编译的DOM模板
+[v-cloak] {
+    display:none;
+}
+<div v-cloak>
+    {{message}}
+</div>
+

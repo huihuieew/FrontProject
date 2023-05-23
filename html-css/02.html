@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>img header</title>
+    <script>
+        let requestImg = function(url,element) {
+            let req = new XMLHttpRequest()
+            req.responseType = 'blob'
+            req.open('get',url,true)
+            req.setRequestHeader('Authorization','bear asdf')
+            req.onreadystatechange = e => {
+                if (req.readyState == XMLHttpRequest.DONE && req.status == 200) {
+                    element.src = URL.createObjectURL(req.response)
+                    element.onload = () => {
+                        URL.revokeObjectURL(element.src)
+                    }
+                }
+            }
+            req.send(null)
+        }
+        class AuthImg extends HTMLImageElement {
+            constructor() {
+                super()
+                this._lastUrl = ''
+            }
+            static get observerdAttributes() {
+                return ['authsrc']
+            }
+            connectedCallback() {
+                let url = this.getAttribute('authsrc')
+                if (url !== this._lastUrl) {
+                    this._lastUrl = url
+                    requestImg(url,this)
+                }
+                console.log('connectedCallback() is called.');
+            }
+            window.customElements.define('auth-img',AuthImg,{extends:'img'})
+        }
+    </script>
+</head>
+<body>
+    <h1>hello</h1>
+    <img authSrc="https://csdnimg.cn/medal/qixiebiaobing4@240.png" is="auth-img"/>
+</body>
+</html>

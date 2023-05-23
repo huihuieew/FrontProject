@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>URL.createObjectURL</title>
+    <!-- <script>
+        let objectURL = URL.createObjectURL(object)
+    </script> -->
+</head>
+<body>
+    <input type="file" id="file">
+    <img id="img1" alt="">
+    <img id="img2" alt="">
+    <script>
+        document.getElementById('file').onchange = async (e) => {
+            console.log('e.target',e.target.files[0]);
+            const file = e.target.files[0]
+            const url1 = await URL.createObjectURL(file)
+            console.log('url1',url1);
+            document.getElementById('img1').src = url1
+            const url2 = await URL.createObjectURL(file)
+            console.log('url2',url2);
+            document.getElementById('img2').src = url2
+            console.log(URL.createObjectURL(e.target.files[0]));
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>file reader</title>
+</head>
+<body>
+    <input type="file" id="file">
+    <img src="" id="imgPreview" alt="">
+    <script>
+        let file = document.getElementById('file')
+        file.onchange = (e) => {
+            // e.target.files
+            const reader = new FileReader()
+            const reader1 = new FileReader()
+            reader.readAsDataURL(e.target.files[0])
+            reader1.readAsText(e.target.files[0])
+            reader.onload = (e) => {
+                console.log('加载完成',e.target.result);
+                document.getElementById('imgPreview').src = e.target.result
+            }
+            reader1.onload = (e) => {
+                console.log('加载完成',e.target.result);
+            }
+            reader.onloadstart = (e) => {
+                if(e.total > 1024*5) {
+                    reader.abort()
+                } else {
+                    console.log('开始加载');
+                }
+            }
+            reader.onabort = () => {
+                console.log('加载已取消');
+            }
+            reader.onprogress = (e) => {
+                console.log('加载中...',`${e.loaded/e.total.toFixed(2)*100}/100`);
+            }
+            reader.onload = () => {
+                console.log('加载成功');
+            }
+            reader.onloadend = (e) => {
+                console.log('加载结束');
+            }
+        }
+    </script>
+</body>
+</html>
