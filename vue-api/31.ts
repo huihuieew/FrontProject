@@ -13,6 +13,7 @@ const MyComponent = defineComponent({
     }
 })
 console.log('component', MyComponent)
+// test1
 
 
 
