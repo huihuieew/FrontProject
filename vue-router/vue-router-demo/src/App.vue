@@ -1,30 +1,31 @@
 <script setup lang="ts">
-import { useRouter, useRoute } from 'vue-router';
-import VueRouter from 'vue-router'
-import Vue from 'vue'
+// import { useRouter, useRoute } from 'vue-router';
+// import VueRouter from 'vue-router'
+// import Vue from 'vue'
+import HelloWorld from './components/HelloWorld.vue';
 
-const Home = {
-  template: '<div>Home</div>'
-}
-const About = {
-  template: '<div>About</div>'
-}
+// const Home = {
+//   template: '<div>Home</div>'
+// }
+// const About = {
+//   template: '<div>About</div>'
+// }
 
-const routes = [
-  { path: '/', component: Home },
-  { path: '/', component: About },
-]
-const router1 = useRouter()
-const route = useRoute()
+// const routes = [
+//   { path: '/', component: Home },
+//   { path: '/', component: About },
+// ]
+// const router1 = useRouter()
+// const route = useRoute()
 
-const router = VueRouter.createRouter({
-  history: VueRouter.createWebHashHistory(),
-  routes,
-})
+// const router = VueRouter.createRouter({
+//   history: VueRouter.createWebHashHistory(),
+//   routes,
+// })
 
-const app = Vue.createApp({})
-app.use(router)
-app.mount('#app')
+// const app = Vue.createApp({})
+// app.use(router)
+// app.mount('#app')
 
 </script>
 
@@ -34,6 +35,7 @@ app.mount('#app')
     <router-link to="/">go to home</router-link>
     <router-link to="/about">go to about</router-link>
     <router-view></router-view>
+    <HelloWorld msg="hello world" />
   </div>
 </template>
 
