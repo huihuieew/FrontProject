@@ -1,7 +1,7 @@
 <script setup lang="ts">
 // import HelloWorld from './components/HelloWorld.vue'
-import test from './components/test.vue';
-import transitionTest from './components/transition-test.vue';
+// import test from './components/test.vue';
+// import transitionTest from './components/transition-test.vue';
 </script>
 
 <template>
@@ -14,8 +14,13 @@ import transitionTest from './components/transition-test.vue';
     </a>
   </div>
   <!-- <HelloWorld msg="Vite + Vue" /> -->
-  <test />
-  <transitionTest />
+  <!-- <test /> -->
+  <!-- <transitionTest /> -->
+  <!-- <button>router1</button> -->
+  <router-link to="/">home</router-link>
+  <router-link to="/test1">test1</router-link>
+  <hr>
+  <router-view></router-view>
 </template>
 
 <style scoped>
@@ -32,5 +37,9 @@ import transitionTest from './components/transition-test.vue';
 
 .logo.vue:hover {
   filter: drop-shadow(0 0 2em #42b883aa);
+}
+
+a {
+  padding: 8px;
 }
 </style>
