@@ -5,20 +5,21 @@
 </script>
 
 <template>
-  <div>
+  <!-- <div>
     <a href="https://vitejs.dev" target="_blank">
       <img src="/vite.svg" class="logo" alt="Vite logo" />
     </a>
     <a href="https://vuejs.org/" target="_blank">
       <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
     </a>
-  </div>
+  </div> -->
   <!-- <HelloWorld msg="Vite + Vue" /> -->
   <!-- <test /> -->
   <!-- <transitionTest /> -->
   <!-- <button>router1</button> -->
   <router-link to="/">home</router-link>
   <router-link to="/test1">test1</router-link>
+  <router-link to="/test2">test2</router-link>
   <hr>
   <router-view></router-view>
 </template>

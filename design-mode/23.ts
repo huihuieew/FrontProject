@@ -255,6 +255,9 @@ addEvent(div, 'click', function () {
     alert(2)
 })
 
+window.addEventListener('click', function () {
+    console.log('arguments', arguments);
+}, false)
 
 
 

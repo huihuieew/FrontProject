@@ -5,3 +5,16 @@
 .mb8 {
     margin-bottom: 8px;
 }
+
+.flex {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.base-box {
+    width: 100px;
+    height: 100px;
+    background-color: antiquewhite;
+    color: white;
+}

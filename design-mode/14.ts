@@ -123,7 +123,7 @@ const user = function () {
 }
 user.prototype.setId = (id) => {
     this.id = id
-    return id
+    return this
 }
 user.prototype.setName = function (name) {
     this.name = name
