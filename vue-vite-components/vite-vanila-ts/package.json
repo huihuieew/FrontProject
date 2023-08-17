@@ -1,0 +1,28 @@
+{
+  "name": "vite-vanila-ts",
+  "private": "false",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "./dist/bundle.js",
+  "module": "./dist/bundle.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "dev": "vite",
+    "dev:example": "npm -C example run dev", // example打包开发调试使用
+    "build": "vue-tsc --noEmit && vite build", // 组件打包
+    "preview": "npm -C example run build && npm -C example run preview" // example打包
+  },
+  "devDependencies": {
+    "typescript": "^5.0.2",
+    "vite": "^4.4.5",
+    "@vitejs/plugin-vue": "^3.0.0",
+    "vite-plugin-dts": "^1.4.0",
+    "vue-tsc": "^0.38.4"
+  },
+  "dependencies": {
+    "vue": "^3.2.37"
+  }
+}
